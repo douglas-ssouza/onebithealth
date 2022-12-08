@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity } from 'react-native';
 
-import ImcResult from './ImcResult';
+import ImcResult from '../ImcResult';
+
+import styles from './styles';
 
 interface Imc {
   value: number | null;
@@ -47,26 +49,27 @@ function Form() {
   };
 
   return (
-    <View>
-      <View>
-        <Text>Altura:</Text>
+    <View style={styles.formContent}>
+      <View style={styles.form}>
+        <Text style={styles.formLabel}>Altura:</Text>
         <TextInput
+          style={styles.input}
           onChangeText={setHeight}
           value={height}
           placeholder='Ex.: 1.75'
           keyboardType='numeric'
         />
-        <Text>Peso:</Text>
+        <Text style={styles.formLabel}>Peso:</Text>
         <TextInput
+          style={styles.input}
           onChangeText={setWeight}
           value={weight}
           placeholder='Ex.: 75.23'
           keyboardType='numeric'
         />
-        <Button
-          title="Calcular"
-          onPress={calculateImc}  
-        />
+        <TouchableOpacity style={styles.buttonCalculator} onPress={calculateImc}>
+          <Text style={styles.buttonText}>Calcular</Text>
+        </TouchableOpacity>
       </View>
       <View>
         { 
