@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Keyboard } from 'react-native';
 
 import ImcResult from '../ImcResult';
 
@@ -46,31 +46,33 @@ function Form() {
     setError('');
     setWeight('');
     setHeight('');
+
+    Keyboard.dismiss();
   };
 
   return (
     <View style={styles.formContent}>
-      <View style={styles.form}>
-        <Text style={styles.formLabel}>Altura:</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={setHeight}
-          value={height}
-          placeholder='Ex.: 1.75'
-          keyboardType='numeric'
-        />
-        <Text style={styles.formLabel}>Peso:</Text>
-        <TextInput
-          style={styles.input}
-          onChangeText={setWeight}
-          value={weight}
-          placeholder='Ex.: 75.23'
-          keyboardType='numeric'
-        />
-        <TouchableOpacity style={styles.buttonCalculator} onPress={calculateImc}>
-          <Text style={styles.buttonText}>Calcular</Text>
-        </TouchableOpacity>
-      </View>
+        <View style={styles.form}>
+          <Text style={styles.formLabel}>Altura:</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={setHeight}
+            value={height}
+            placeholder='Ex.: 1.75'
+            keyboardType='numeric'
+          />
+          <Text style={styles.formLabel}>Peso:</Text>
+          <TextInput
+            style={styles.input}
+            onChangeText={setWeight}
+            value={weight}
+            placeholder='Ex.: 75.23'
+            keyboardType='numeric'
+          />
+          <TouchableOpacity style={styles.buttonCalculator} onPress={calculateImc}>
+            <Text style={styles.buttonText}>Calcular</Text>
+          </TouchableOpacity>
+        </View>
       <View>
         { 
           error

@@ -1,14 +1,16 @@
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Text, TouchableWithoutFeedback, Keyboard } from 'react-native';
 
 import Title from './src/components/Title';
 import Main from './src/components/Main';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Title />
-      <Main />
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+      <View style={styles.container}>
+        <Title />
+        <Main />
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
