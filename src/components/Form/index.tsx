@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Keyboard } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Keyboard, Vibration } from 'react-native';
 
 import ImcResult from '../ImcResult';
 
@@ -27,13 +27,24 @@ function Form() {
       return 'Obesidade grau I';
     } else if (imcValue < 40) {
       return 'Obesidade grau II';
-    } else {
+    } else if (imcValue >= 40) {
       return 'Obesidade grau III';
+    } else {
+      return '';
     }
   }
 
   const calculateImc = () => {
-    if (!weight || !height || (Number(weight) < 0 || Number(height) < 0)) {
+    if (isNaN(Number(weight)) || isNaN(Number(height))) {
+      Vibration.vibrate();
+      setError('Utilize apenas valores numéricos com pontos e não virgulas');
+      setHeight('');
+      setWeight('');
+      return;
+    }
+
+    if (!weight || !height || Number(weight) < 0 || Number(height) < 0) {
+      Vibration.vibrate();
       setError('Preencha peso e altura com valores positivos');
       setImc({ value: null, status: ''});
       return;

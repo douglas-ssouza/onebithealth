@@ -9,13 +9,17 @@ interface ImcResultProps {
 }
 
 function ImcResult(props: ImcResultProps) {
-  return (
-    <View style={ styles.resultContainer }>
-      <Text style={ styles.infoText }>Seu IMC é igual a:</Text>
-      <Text style={ { ...styles.infoText, ...styles.resultText } }>{ props.imcValue }</Text>
-      <Text style={ styles.infoText }>{ props.imcStatus }</Text>
-    </View>
-  );
+  if (props.imcValue) {
+    return (
+      <View style={ styles.resultContainer }>
+        <Text style={ styles.infoText }>Seu IMC é igual a:</Text>
+        <Text style={ { ...styles.infoText, ...styles.resultText } }>{ props.imcValue }</Text>
+        <Text style={ styles.infoText }>{ props.imcStatus }</Text>
+      </View>
+    );
+  }
+
+  return <></>
 }
 
 export default ImcResult;
