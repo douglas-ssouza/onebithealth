@@ -10,7 +10,7 @@ interface ImcResultProps {
 
 function ImcResult(props: ImcResultProps) {
   const onShare = async () => {
-    const result = await Share.share({
+    await Share.share({
       message: `Meu imc hoje é: ${props.imcValue}. Classificação: ${props.imcStatus}`
     });
   }
