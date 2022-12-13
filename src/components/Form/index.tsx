@@ -6,6 +6,7 @@ import ImcResult from '../ImcResult';
 import styles from './styles';
 
 import { getImcValue, getImcStatus } from '../../utils/imc';
+import validateForm from '../../utils/validateForm';
 
 interface Imc {
   value: number | null;
@@ -19,17 +20,13 @@ function Form() {
   const [imc, setImc] = useState<Imc>({ value: null, status: '' });
 
   const calculateImc = () => {
-    if (isNaN(Number(weight)) || isNaN(Number(height))) {
+    const invalidMessage = validateForm(weight, height);
+
+    if (invalidMessage) {
       Vibration.vibrate();
-      setError('Utilize apenas valores numéricos com pontos e não virgulas');
+      setError(invalidMessage);
       setHeight('');
       setWeight('');
-      return;
-    }
-
-    if (!weight || !height || Number(weight) < 0 || Number(height) < 0) {
-      Vibration.vibrate();
-      setError('Preencha peso e altura com valores positivos');
       setImc({ value: null, status: ''});
       return;
     }
