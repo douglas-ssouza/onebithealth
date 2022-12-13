@@ -21,14 +21,12 @@ function ImcResult(props: ImcResultProps) {
         <Text style={ styles.infoText }>Seu IMC é igual a:</Text>
         <Text style={ { ...styles.infoText, ...styles.resultText } }>{ props.imcValue }</Text>
         <Text style={ styles.infoText }>{ props.imcStatus }</Text>
-        <View style={styles.sharedContainer}>
-          <TouchableOpacity
-            style={styles.sharedButton}
-            onPress={onShare}
-          >
-            <Text style={styles.sharedText}>Compartilhar</Text>
-          </TouchableOpacity>
-        </View>
+        <TouchableOpacity
+          style={styles.sharedButton}
+          onPress={onShare}
+        >
+          <Text style={styles.sharedText}>Compartilhar</Text>
+        </TouchableOpacity>
       </View>
     );
   }
