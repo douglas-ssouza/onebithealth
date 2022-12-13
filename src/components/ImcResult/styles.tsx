@@ -16,7 +16,21 @@ const styles = StyleSheet.create({
   },
   resultText: {
     fontSize: 48,
-  }
+  },
+  sharedContainer: {
+    marginTop: 20,
+  },
+  sharedButton: {
+    backgroundColor: '#1877F2',
+    borderRadius: 50,
+  },
+  sharedText: {
+    color: '#FFFFFF',
+    fontWeigth: 700,
+    fontSize: 18,
+    paddingVertical: 10,
+    paddingHorizontal: 50,
+  },
 });
 
 export default styles;
