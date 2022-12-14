@@ -2,11 +2,11 @@ import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
   resultContainer: {
-    flex: 1,
     marginTop: 15,
     paddingTop: 60,
     borderRadius: 50,
     alignItems: 'center',
+    justifyContent: 'center',
     width: '100%',
   },
   infoText: {
@@ -24,7 +24,18 @@ const styles = StyleSheet.create({
   },
   sharedText: {
     color: '#FFFFFF',
-    fontSize: 18,
+    fontSize: 15,
+    paddingVertical: 10,
+    paddingHorizontal: 50,
+  },
+  buttonCalculator: {
+    backgroundColor: '#FF0043',
+    borderRadius: 50,
+    marginTop: 30,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 20,
     paddingVertical: 10,
     paddingHorizontal: 50,
   },

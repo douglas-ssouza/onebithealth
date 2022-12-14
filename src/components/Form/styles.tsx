@@ -44,6 +44,13 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#fff',
   },
+  errorText: {
+    textAlign: 'center',
+    marginTop: 30,
+    fontSize: 18,
+    color: '#FF0043',
+    fontWeight: 'bold',
+  },
 });
 
 export default styles;
