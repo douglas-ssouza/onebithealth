@@ -13,11 +13,18 @@ interface Imc {
   status: string;
 }
 
+interface Result {
+  id: string;
+  value: number;
+  status: string;
+}
+
 function Form() {
   const [height, setHeight] = useState<string>('');
   const [weight, setWeight] = useState<string>('');
   const [error, setError] = useState<string>('');
   const [imc, setImc] = useState<Imc>({ value: null, status: '' });
+  const [results, setResults] = useState<[] | Result[]>([]);
 
   const calculateImc = () => {
     const invalidMessage = validateForm(weight, height);
@@ -30,6 +37,10 @@ function Form() {
       const imcValue = getImcValue(weight, height);
       const imcStatus = getImcStatus(imcValue);
       setImc({ value: imcValue, status: imcStatus });
+      setResults([
+        ...results,
+        { id: new Date().getTime().toString(), value: imcValue, status: imcStatus },
+      ]);
       setError('');
     }
 
@@ -42,7 +53,12 @@ function Form() {
     <View style={styles.formContent}>
       {
         imc.value
-          ? <ImcResult setImc={setImc} imcValue={imc.value} imcStatus={imc.status} />
+          ? <ImcResult
+              setImc={setImc}
+              imcValue={imc.value}
+              imcStatus={imc.status}
+              results={results}
+            />
           : (
             <View style={styles.form}>
               <Text style={styles.formLabel}>Altura:</Text>

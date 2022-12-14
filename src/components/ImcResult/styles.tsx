@@ -39,6 +39,14 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 50,
   },
+  listContainer: {
+    marginTop: 20,
+  },
+  listText: {
+    fontSize: 16,
+    color: '#FF0043',
+    fontWeight: 'bold',
+  },
 });
 
 export default styles;
